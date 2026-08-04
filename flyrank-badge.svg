@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="32" viewBox="0 0 160 32">
+  <rect x="0.5" y="0.5" width="159" height="31" rx="6" fill="#161b24" stroke="#242b38"/>
+  <circle cx="16" cy="16" r="6" fill="none" stroke="#8a6a1f" stroke-width="2" stroke-dasharray="3 2"/>
+  <text x="30" y="14" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="9" font-weight="600" fill="#e9e7df">FlyRank Graduate</text>
+  <text x="30" y="25" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="8" fill="#8a6a1f">verification pending</text>
+</svg>
