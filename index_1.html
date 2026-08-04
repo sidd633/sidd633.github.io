@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidhu Velaboina — Backend AI Engineer</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<!-- Social share preview (Open Graph + Twitter) -->
+<meta name="description" content="Backend AI Engineer Intern building AI model features into production systems with Python, FastAPI, and Django.">
+<link rel="canonical" href="https://sidd633.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sidhu Velaboina — Backend AI Engineer">
+<meta property="og:description" content="Backend AI Engineer Intern building AI model features into production systems with Python, FastAPI, and Django.">
+<meta property="og:image" content="https://sidd633.github.io/preview.png">
+<meta property="og:url" content="https://sidd633.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sidhu Velaboina — Backend AI Engineer">
+<meta name="twitter:description" content="Backend AI Engineer Intern building AI model features into production systems with Python, FastAPI, and Django.">
+<meta name="twitter:image" content="https://sidd633.github.io/preview.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0d12;
+    --bg-alt:#10141b;
+    --surface:#161b24;
+    --surface-hover:#1c222d;
+    --border:#242b38;
+    --border-bright:#39424f;
+    --amber:#ffb300;
+    --amber-dim:#8a6a1f;
+    --amber-glow:rgba(255,179,0,0.18);
+    --teal:#5eead4;
+    --text:#e9e7df;
+    --text-dim:#8b93a1;
+    --text-faint:#5a6270;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --sans:'IBM Plex Sans',system-ui,sans-serif;
+    --radius:6px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  a{color:var(--teal); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+
+  .wrap{max-width:840px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- Terminal window chrome ---------- */
+  .term{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 0 0 1px rgba(0,0,0,0.3), 0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    background:var(--bg-alt);
+    border-bottom:1px solid var(--border);
+  }
+  .term-dot{width:11px; height:11px; border-radius:50%; background:var(--border-bright);}
+  .term-title{
+    margin-left:8px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-faint);
+    letter-spacing:0.03em;
+  }
+  .term-body{padding:28px clamp(18px,4vw,40px);}
+
+  /* ---------- Layout sections ---------- */
+  header.hero{padding:56px 0 28px;}
+  section{padding:40px 0;}
+  section + section{border-top:1px solid var(--border);}
+  footer{padding:40px 0 64px; border-top:1px solid var(--border);}
+
+  .prompt{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--amber);
+    letter-spacing:0.02em;
+    margin-bottom:14px;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .prompt::before{content:"$"; color:var(--text-faint);}
+
+  h1{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:clamp(28px,6vw,44px);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  h2{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:clamp(20px,4vw,26px);
+    color:var(--text);
+    margin-bottom:20px;
+  }
+  h3{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:17px;
+    color:var(--text);
+  }
+
+  .role-line{
+    font-family:var(--mono);
+    font-size:15px;
+    color:var(--teal);
+    margin-top:10px;
+  }
+  .cursor{
+    display:inline-block;
+    width:9px; height:1.1em;
+    background:var(--amber);
+    margin-left:2px;
+    vertical-align:text-bottom;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  .meta-row{
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--text-dim);
+  }
+  .meta-row a{color:var(--text-dim);}
+  .meta-row a:hover{color:var(--teal);}
+
+  .summary{
+    margin-top:24px;
+    max-width:64ch;
+    color:var(--text);
+    font-size:16px;
+  }
+
+  /* ---------- Experience ---------- */
+  .job{
+    padding:20px 0;
+  }
+  .job + .job{border-top:1px dashed var(--border);}
+  .job-head{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:6px 16px;
+    margin-bottom:10px;
+  }
+  .job-role{font-family:var(--mono); font-weight:600; font-size:16px; color:var(--text);}
+  .job-org{color:var(--teal);}
+  .job-dates{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--text-faint);
+    white-space:nowrap;
+  }
+  ul.bullets{list-style:none; margin-top:8px;}
+  ul.bullets li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:8px;
+    color:var(--text-dim);
+    font-size:15px;
+  }
+  ul.bullets li::before{
+    content:">";
+    position:absolute;
+    left:0;
+    color:var(--amber-dim);
+    font-family:var(--mono);
+  }
+
+  /* ---------- Projects ---------- */
+  .status-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:var(--teal);
+    border:1px solid rgba(94,234,212,0.35);
+    background:rgba(94,234,212,0.06);
+    padding:3px 8px;
+    border-radius:20px;
+    text-transform:uppercase;
+  }
+  .status-dot{width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.35;}}
+
+  .project-card{
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px 22px;
+    margin-bottom:16px;
+    transition:border-color 0.15s ease, background 0.15s ease;
+  }
+  .project-card:hover{border-color:var(--border-bright); background:var(--surface-hover);}
+  .project-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+  .project-desc{color:var(--text-dim); font-size:14.5px; margin-bottom:10px;}
+  .project-desc em{color:var(--text-faint); font-style:italic;}
+  .stack-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-dim);
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:3px 9px;
+    border-radius:4px;
+  }
+
+  .editor-note{
+    margin-top:22px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--amber-dim);
+    border-left:2px solid var(--amber-dim);
+    padding:8px 14px;
+    background:var(--amber-glow);
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .skill-pill{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--text);
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    padding:6px 13px;
+    border-radius:4px;
+  }
+
+  /* ---------- Education ---------- */
+  .edu-card{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:6px 16px;
+    align-items:baseline;
+  }
+  .edu-school{font-family:var(--mono); font-weight:600; font-size:15.5px;}
+  .edu-degree{color:var(--text-dim); font-size:14.5px; margin-top:4px;}
+  .edu-years{font-family:var(--mono); font-size:12.5px; color:var(--text-faint); white-space:nowrap;}
+
+  /* ---------- Footer ---------- */
+  .footer-inner{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:14px;
+  }
+  .footer-links{display:flex; gap:20px; font-family:var(--mono); font-size:13px;}
+  .footer-note{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+
+  /* ---------- Buttons (tap targets) ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:13.5px;
+    color:var(--bg);
+    background:var(--amber);
+    padding:11px 18px;
+    border-radius:5px;
+    font-weight:600;
+    min-height:44px;
+  }
+  .btn:hover{background:#ffc233; text-decoration:none;}
+  .btn-outline{
+    background:transparent;
+    color:var(--amber);
+    border:1px solid var(--amber-dim);
+  }
+  .btn-outline:hover{background:var(--amber-glow);}
+  .btn-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;}
+
+  @media (max-width:480px){
+    .term-body{padding:22px 16px;}
+    section{padding:32px 0;}
+    .job-head, .edu-card{flex-direction:column;}
+  }
+</style>
+
+<!-- TODO(analytics): Go to dash.cloudflare.com -> Web Analytics -> Add site (sidd633.github.io)
+     Copy the token they give you and paste it in place of PASTE-CLOUDFLARE-TOKEN-HERE below.
+     Nothing will be tracked until this is a real token. -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "PASTE-CLOUDFLARE-TOKEN-HERE"}'></script>
+
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="term">
+      <div class="term-bar">
+        <span class="term-dot" style="background:#ff5f56"></span>
+        <span class="term-dot" style="background:#ffbd2e"></span>
+        <span class="term-dot" style="background:#27c93f"></span>
+        <span class="term-title">sidhu@portfolio: ~</span>
+      </div>
+      <div class="term-body">
+        <div class="prompt">whoami</div>
+        <h1>Sidhu Velaboina<span class="cursor"></span></h1>
+        <div class="role-line">Backend AI Engineer Intern — Python · FastAPI/Django · Shipping AI model features to production</div>
+
+        <div class="meta-row">
+          <a href="mailto:sidduvelaboina@gmail.com">sidduvelaboina@gmail.com</a>
+          <span>Greater Hyderabad Area</span>
+          <a href="https://linkedin.com/in/sidduvelaboina-54391334b" target="_blank" rel="noopener">linkedin.com/in/sidduvelaboina-54391334b</a>
+          <a href="https://github.com/sidd633" target="_blank" rel="noopener">github.com/sidd633</a>
+        </div>
+
+        <p class="summary">
+          Backend AI Engineer Intern at FlyRank AI, building and integrating AI model features using Python and backend frameworks like FastAPI/Django. Computer Science student at CMR College of Engineering &amp; Technology, focused on the intersection of backend engineering and applied AI — taking ML/LLM capabilities from notebook to production. Open to backend and AI engineering roles.
+        </p>
+
+        <div class="btn-row">
+          <a class="btn" href="mailto:sidduvelaboina@gmail.com">Email me</a>
+          <a class="btn btn-outline" href="https://github.com/sidd633" target="_blank" rel="noopener">View GitHub</a>
+          <a class="btn btn-outline" href="https://cal.com/siddu-velaboina-pkjf77/15min" target="_blank" rel="noopener">Book 15 min</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="experience">
+    <div class="prompt">cat experience.log</div>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <span class="job-role">Backend AI Engineer Intern</span> —
+          <span class="job-org">FlyRank AI</span>
+        </div>
+        <div class="job-dates">June 2026 – Present · Hyderabad</div>
+      </div>
+      <ul class="bullets">
+        <li>Build and integrate AI model features into backend systems using Python and frameworks including FastAPI and Django</li>
+        <li>Work on backend infrastructure that connects AI/ML model outputs to production-facing services</li>
+        <li>Collaborate within an AI engineering team to ship features from concept to deployment</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="prompt">cat skills.json</div>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <span class="skill-pill">Python</span>
+      <span class="skill-pill">SQL</span>
+      <span class="skill-pill">Git</span>
+      <span class="skill-pill">Machine Learning</span>
+      <span class="skill-pill">LLMs</span>
+      <span class="skill-pill">NLP</span>
+      <span class="skill-pill">FastAPI</span>
+      <span class="skill-pill">Django</span>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="prompt">cat education.log</div>
+    <h2>Education</h2>
+    <div class="edu-card">
+      <div>
+        <div class="edu-school">CMR College of Engineering &amp; Technology</div>
+        <div class="edu-degree">Bachelor of Technology, Computer Science and Engineering</div>
+      </div>
+      <div class="edu-years">2024 – 2028</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mailto:sidduvelaboina@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/sidduvelaboina-54391334b" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/sidd633" target="_blank" rel="noopener">GitHub</a>
+        <a href="./Sidhu_Velaboina_CV.pdf" target="_blank" rel="noopener">CV / Resume</a>
+      </div>
+      <div class="footer-note">Built with Python in mind. Rendered in a terminal, mostly.</div>
+      <!-- TODO(badge): 1) Get your verification URL + badge SVG from the FlyRank dashboard/Q&A thread.
+           2) Replace the href below with your real verification URL.
+           3) Upload the badge SVG to your repo root as flyrank-badge.svg (or update the src path). -->
+      <a href="https://REPLACE-WITH-YOUR-FLYRANK-VERIFICATION-URL" target="_blank" rel="noopener" aria-label="FlyRank Graduate — verified">
+        <img src="/flyrank-badge.svg" alt="FlyRank Graduate Badge" style="height:32px; display:block;">
+      </a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
